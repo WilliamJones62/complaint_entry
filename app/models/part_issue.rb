@@ -1,0 +1,2 @@
+class PartIssue < ApplicationRecord
+end

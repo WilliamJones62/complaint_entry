@@ -1,0 +1,37 @@
+<%= form_with(model: part_issue, local: true) do |form| %>
+  <% if part_issue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(part_issue.errors.count, "error") %> prohibited this part_issue from being saved:</h2>
+
+      <ul>
+      <% part_issue.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :pictures %>
+    <%= form.text_field :pictures, id: :part_issue_pictures %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_area :notes, id: :part_issue_notes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :part_id %>
+    <%= form.number_field :part_id, id: :part_issue_part_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :issue_id %>
+    <%= form.number_field :issue_id, id: :part_issue_issue_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

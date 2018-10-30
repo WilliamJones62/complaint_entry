@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Part code:</strong>
+  <%= @part.part_code %>
+</p>
+
+<p>
+  <strong>Qty returned:</strong>
+  <%= @part.qty_returned %>
+</p>
+
+<p>
+  <strong>Invoice:</strong>
+  <%= @part.invoice_id %>
+</p>
+
+<%= link_to 'Edit', edit_part_path(@part) %> |
+<%= link_to 'Back', parts_path %>

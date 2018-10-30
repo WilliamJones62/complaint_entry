@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @issue.category %>
+</p>
+
+<p>
+  <strong>Issue:</strong>
+  <%= @issue.issue %>
+</p>
+
+<p>
+  <strong>Invoice:</strong>
+  <%= @issue.invoice_id %>
+</p>
+
+<%= link_to 'Edit', edit_issue_path(@issue) %> |
+<%= link_to 'Back', issues_path %>
