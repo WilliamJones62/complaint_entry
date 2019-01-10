@@ -1,24 +1,7 @@
-<p id="notice"><%= notice %></p>
+<h1>Invoice: <%= @invoice.invoice_number %></h1>
+<h2>Part Code: <%= @part_issue.part.part_code %></h2>
+<h2>Issue: <%= @part_issue.issue.issue %></h2>
+<h3>Pictures: <%= @part_issue.pictures %></h2>
+<h3>Notes: <%= @part_issue.notes %></h2>
 
-<p>
-  <strong>Pictures:</strong>
-  <%= @part_issue.pictures %>
-</p>
-
-<p>
-  <strong>Notes:</strong>
-  <%= @part_issue.notes %>
-</p>
-
-<p>
-  <strong>Part:</strong>
-  <%= @part_issue.part_id %>
-</p>
-
-<p>
-  <strong>Issue:</strong>
-  <%= @part_issue.issue_id %>
-</p>
-
-<%= link_to 'Edit', edit_part_issue_path(@part_issue) %> |
-<%= link_to 'Back', part_issues_path %>
+<%= link_to 'List', part_issues_path %>

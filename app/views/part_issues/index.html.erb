@@ -1,28 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Part Issues</h1>
+<h1>Complaints</h1>
+<h2>Invoice : <%= @invoice.invoice_number %></h2>
 
-<table>
+<table id="listtab"  class="stripe" class="mytable" class="display" cellspacing="0" >
   <thead>
     <tr>
-      <th>Pictures</th>
-      <th>Notes</th>
       <th>Part</th>
       <th>Issue</th>
-      <th colspan="3"></th>
+      <th>Notes</th>
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @part_issues.each do |part_issue| %>
+    <% @part_issues.each do |pi| %>
       <tr>
-        <td><%= part_issue.pictures %></td>
-        <td><%= part_issue.notes %></td>
-        <td><%= part_issue.part_id %></td>
-        <td><%= part_issue.issue_id %></td>
-        <td><%= link_to 'Show', part_issue %></td>
-        <td><%= link_to 'Edit', edit_part_issue_path(part_issue) %></td>
-        <td><%= link_to 'Destroy', part_issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= pi.part.part_code %></td>
+        <td><%= pi.issue.issue %></td>
+        <td><%= pi.notes %></td>
+        <td><%= link_to 'Show', pi %></td>
+        <td><%= link_to 'Edit', edit_part_issue_path(pi) %></td>
+        <td><%= link_to 'Delete', pi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Part Issue', new_part_issue_path %>
+<%= link_to 'New Complaint', new_part_issue_path %>

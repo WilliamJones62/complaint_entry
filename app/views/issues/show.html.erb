@@ -1,19 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @issue.category %>
-</p>
+<h1>Invoice: <%= @invoice.invoice_number %></h1>
+<h2>Category: <%= @issue.category %></h2>
+<h2>Issue: <%= @issue.issue %></h2>
+<h3>Parts</h3>
+<table id="listtab"  class="stripe" class="mytable" class="display" cellspacing="0" >
+  <thead>
+    <tr>
+      <th>Part Code</th>
+      <th>Qty Returned</th>
+    </tr>
+  </thead>
+    <tbody>
+      <% @issue.parts.each do |p| %>
+      <tr>
+        <td><%= p.part_code %></td>
+        <td><%= p.qty_returned %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<p>
-  <strong>Issue:</strong>
-  <%= @issue.issue %>
-</p>
-
-<p>
-  <strong>Invoice:</strong>
-  <%= @issue.invoice_id %>
-</p>
-
-<%= link_to 'Edit', edit_issue_path(@issue) %> |
-<%= link_to 'Back', issues_path %>
+<%= link_to 'Add Part', new_part_issue_path %>
+<%= link_to 'List', invoice_path %>

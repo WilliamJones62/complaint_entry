@@ -1,19 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Part code:</strong>
-  <%= @part.part_code %>
-</p>
+<h1>Invoice: <%= @invoice.invoice_number %></h1>
+<h2>Part Code: <%= @part.part_code %></h2>
+<h2>Qty Returned: <%= @part.qty_returned %></h2>
+<h3>Issues</h3>
+<table id="listtab"  class="stripe" class="mytable" class="display" cellspacing="0" >
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Issue</th>
+    </tr>
+  </thead>
+    <tbody>
+      <% @part.issues.each do |p| %>
+      <tr>
+        <td><%= p.category %></td>
+        <td><%= p.issue %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<p>
-  <strong>Qty returned:</strong>
-  <%= @part.qty_returned %>
-</p>
-
-<p>
-  <strong>Invoice:</strong>
-  <%= @part.invoice_id %>
-</p>
-
-<%= link_to 'Edit', edit_part_path(@part) %> |
-<%= link_to 'Back', parts_path %>
+<%= link_to 'Add Issue', new_part_issue_path %>
+<%= link_to 'List', invoice_path %>

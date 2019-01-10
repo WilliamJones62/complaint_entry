@@ -11,20 +11,56 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :invoice_number %>
-    <%= form.text_field :invoice_number, id: :invoice_invoice_number %>
-  </div>
+  <table>
+    <thead>
+      <tr>
+        <th><%= form.label :invoice_number %></th>
+        <th><%= form.label :issue_date %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= form.text_field :invoice_number, id: :invoice_invoice_number %></td>
+        <td><%= form.date_field :issue_date, id: :invoice_issue_date %></td>
+      </tr>
+    </tbody>
+  </table>
 
-  <div class="field">
-    <%= form.label :issue_date %>
-    <%= form.date_select :issue_date, id: :invoice_issue_date %>
-  </div>
+  <h3>Parts</h3>
+  <%= form.fields_for :parts do |part| %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= part.label :part_code %></th>
+        <th><%= part.label :qty_returned %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= part.text_field :part_code %></td>
+        <td><%= part.number_field :qty_returned %></td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :owner %>
-    <%= form.text_field :owner, id: :invoice_owner %>
-  </div>
+  <h3>Issues</h3>
+  <%= form.fields_for :issues do |issue| %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= issue.label :category %></th>
+        <th><%= issue.label :issue %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= issue.select :category, @category, {include_blank: true}, {:onChange=> ("categoryIssues(id)")} %></td>
+        <td><%= issue.select :issue, @issue, {include_blank: true} %></td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

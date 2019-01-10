@@ -1,19 +1,63 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Invoice number:</strong>
-  <%= @invoice.invoice_number %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th>Invoice number</th>
+      <th>Issue date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @invoice.invoice_number %></td>
+      <td><%= display_date(@invoice.issue_date) %></td>
+    </tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Issue date:</strong>
-  <%= @invoice.issue_date %>
-</p>
+<h3>Parts</h3>
+<table id="listtab"  class="stripe" class="mytable" class="display" cellspacing="0" >
+  <thead>
+    <tr>
+      <th>Part Code</th>
+      <th>Qty Returned</th>
+      <th>Show</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invoice.parts.each do |p| %>
+    <tr>
+      <td><%= p.part_code %></td>
+      <td><%= p.qty_returned %></td>
+      <td><%= link_to 'Show', invoice_part_path(@invoice.id, p.id)%></td>
+      <td><%= link_to 'Delete', invoice_part_path(@invoice.id, p.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<p>
-  <strong>Owner:</strong>
-  <%= @invoice.owner %>
-</p>
+<h3>Issues</h3>
+<table id="listtab2"  class="stripe" class="mytable" class="display" cellspacing="0" >
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Issue</th>
+      <th>Show</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invoice.issues.each do |i| %>
+    <tr>
+      <td><%= i.category %></td>
+      <td><%= i.issue %></td>
+      <td><%= link_to 'Show', invoice_issue_path(@invoice.id, i.id)%></td>
+      <td><%= link_to 'Delete', invoice_issue_path(@invoice.id, i.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+<%= link_to 'Edit', edit_invoice_path(@invoice) %>
+<%= link_to 'List', invoices_path %>
